@@ -2,9 +2,9 @@
 
 console.log(products)
 
-let productHtml=''
-products.forEach((product)=>{
-    productHtml +=`<div class="product-container">
+let productHtml = ''
+products.forEach((product) => {
+    productHtml += `<div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
               src="${product.image}">
@@ -16,7 +16,7 @@ products.forEach((product)=>{
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.stars*10}.png">
+              src="images/ratings/rating-${product.rating.stars * 10}.png">
             <div class="product-rating-count link-primary">
             ${product.rating.count}
             </div>
@@ -48,12 +48,35 @@ products.forEach((product)=>{
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary" id="js-add-to-cart" data-product-id="${product.id}">
             Add to Cart
           </button>
         </div>`
-        
-    })
-    console.log(productHtml)
 
-    document.querySelector('#js-products-grid').innerHTML = productHtml
+})
+console.log(productHtml)
+
+document.querySelector('#js-products-grid').innerHTML = productHtml
+
+document.querySelectorAll('#js-add-to-cart').forEach((button) => {
+    button.addEventListener("click", () => {
+        console.log(button.dataset.productName)
+        const productId = button.dataset.productId
+
+        let matchingItem;
+        cart.forEach((item) => {
+            if (productId === item.productId) {
+                matchingItem = item;
+            }
+        })
+        if (matchingItem) {
+            matchingItem.Quantity++
+        } else {
+            cart.push({
+                productId: productId,
+                Quantity: 1
+            })
+        }
+
+    })
+})
