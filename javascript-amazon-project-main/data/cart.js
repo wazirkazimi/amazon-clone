@@ -1,1 +1,2 @@
-const cart=[]
+// cart.js
+export const cart = [];
