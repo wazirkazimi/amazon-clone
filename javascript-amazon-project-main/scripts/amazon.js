@@ -1,7 +1,9 @@
-import {cart} from '../data/cart.js';
+import {cart , addTocartAnimation , checkQauntity , Idcheck} from '../data/cart.js';
 import {products} from '../data/products.js';
-console.log(cart)
+// console.log(cart)
 
+
+//Add the multiple product to the page dynamically
 let productHtml = ''
 products.forEach((product) => {
     productHtml += `<div class="product-container">
@@ -53,42 +55,16 @@ products.forEach((product) => {
           </button>
         </div>`
 })
-console.log(productHtml)
+// console.log(productHtml)
 
+//Add the products to the page
 document.querySelector('#js-products-grid').innerHTML = productHtml
 
 document.querySelectorAll('.add-to-cart-button').forEach((button) => {
     button.addEventListener("click", () => {
         const productId = button.dataset.productId
-
-        let matchingItem;
-        cart.forEach((item) => {
-            if (productId === item.productId) {
-                matchingItem = item;
-            }
-        })
-        if (matchingItem) {
-            matchingItem.Quantity++
-        } else {
-            cart.push({
-                productId: productId,
-                Quantity: 1
-            })
-        }
-        let cartQuantity = 0
-        cart.forEach((item) => {
-            cartQuantity += item.Quantity;
-        })
-        document.querySelector('#js-cart-quantity').innerText = cartQuantity
-        console.log(cartQuantity)
-        console.log(cart)
-
-        const productContainer = button.closest('.product-container');
-        const addedToCartDiv = productContainer.querySelector('.added-to-cart');
-        addedToCartDiv.style.opacity = '1';
-
-        setTimeout(() => {
-            addedToCartDiv.style.opacity = '0';
-        }, 2000);
+        Idcheck(productId);
+        checkQauntity();
+        addTocartAnimation(button);
     })
 })
