@@ -1,12 +1,21 @@
 // cart.js
-export let cart = [{
-    productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
-    Quantity: 2
-},
-{
-    productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
-    Quantity: 2
-}];
+export let cart =JSON.parse(localStorage.getItem('cart'))
+//If cart is empty it will return the following default vaule
+if (!cart) {
+ cart=[{
+        productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+        Quantity: 2
+    },
+    {
+        productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+        Quantity: 2
+    }];
+}
+
+//Saving the product into the LocalStorage
+function savetoStorage() {
+    localStorage.setItem('cart',JSON.stringify(cart))
+}
 //To check for the repeated item in the cart and increament accordingly
 export function Idcheck(productId) {
   let matchingItem;
@@ -23,6 +32,7 @@ export function Idcheck(productId) {
                 Quantity: 1
             })
         }
+        savetoStorage()
 }
 
 //Calculate the qauntity of the cart and update the text
@@ -57,4 +67,5 @@ export function removeFromCart(productId) {
 
 
     cart=newCart
+    savetoStorage()
 }
