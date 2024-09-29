@@ -1,19 +1,23 @@
+// import { deliveryOption } from "./deliveryOption";
+
 // cart.js
 export let cart =JSON.parse(localStorage.getItem('cart'))
 //If cart is empty it will return the following default vaule
 if (!cart) {
  cart=[{
         productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
-        Quantity: 2
+        Quantity: 2,
+        deliveryOptionId:'1'
     },
     {
         productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
-        Quantity: 2
+        Quantity: 2,
+        deliveryOptionId:'2'
     }];
 }
 
 //Saving the product into the LocalStorage
-function savetoStorage() {
+export function savetoStorage() {
     localStorage.setItem('cart',JSON.stringify(cart))
 }
 //To check for the repeated item in the cart and increament accordingly
@@ -29,7 +33,8 @@ export function Idcheck(productId) {
         } else {
             cart.push({
                 productId: productId,
-                Quantity: 1
+                Quantity: 1,
+                deliveryOptionId:'1'
             })
         }
         savetoStorage()
@@ -41,7 +46,11 @@ export function checkQauntity() {
         cart.forEach((item) => {
             cartQuantity += item.Quantity;
         })
-        document.querySelector('#js-cart-quantity').innerText = cartQuantity
+        return cartQuantity
+        // document.querySelector('#js-cart-quantity').innerText = cartQuantity
+
+        // document.querySelector('.js-total-cart-quantity').innerHTML=`Checkout (<a class="return-to-home-link "
+        // href="amazon.html">${cartQuantity} items</a>)`
         // console.log(cartQuantity)
         // console.log(cart)
 }
@@ -68,4 +77,14 @@ export function removeFromCart(productId) {
 
     cart=newCart
     savetoStorage()
+}
+//Update Quantity of the cart in the above head and in payment section
+export function updateQuantity() {
+    //This lines add the total quantity of the cart to page
+let x=checkQauntity()
+document.querySelector('.js-total-cart-quantity').innerHTML=`Checkout (<a class="return-to-home-link "
+href="amazon.html">${x} items</a>)`
+console.log(x)
+document.querySelector('.js-payment-summary-row').innerHTML=`<div>Items (${x}):</div>`
+
 }

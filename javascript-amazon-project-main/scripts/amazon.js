@@ -1,4 +1,4 @@
-import {cart , addTocartAnimation , checkQauntity , Idcheck} from '../data/cart.js';
+import {cart , addTocartAnimation , checkQauntity , Idcheck , savetoStorage , updateQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 // console.log(cart)
 
@@ -61,10 +61,14 @@ products.forEach((product) => {
 document.querySelector('#js-products-grid').innerHTML = productHtml
 
 document.querySelectorAll('.add-to-cart-button').forEach((button) => {
-    button.addEventListener("click", () => {
-        const productId = button.dataset.productId
-        Idcheck(productId);
-        checkQauntity();
-        addTocartAnimation(button);
+  button.addEventListener("click", () => {
+    const productId = button.dataset.productId
+    Idcheck(productId);
+    let  js_cart_quantity= checkQauntity();
+    document.querySelector('#js-cart-quantity').innerText = js_cart_quantity
+    savetoStorage();
+    // updateQuantity()
+    addTocartAnimation(button);
+    savetoStorage()
     })
 })
