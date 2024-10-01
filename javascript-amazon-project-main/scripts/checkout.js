@@ -3,31 +3,34 @@ import { products } from '../data/products.js';
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { deliveryOption } from '../data/deliveryOption.js';
 
-let cartSummaryHTML = '';
 
-cart.forEach((cartItem) => {
-    const productId = cartItem.productId;
-    let matchingProduct = products.find(product => product.id === productId);
+function renderOrdersummary() {
+    
+        let cartSummaryHTML = '';
 
-    // If no matching product is found, log the issue and skip rendering this cart item
-    if (!matchingProduct) {
+        cart.forEach((cartItem) => {
+        const productId = cartItem.productId;
+        let matchingProduct = products.find(product => product.id === productId);
+
+        // If no matching product is found, log the issue and skip rendering this cart item
+        if (!matchingProduct) {
         console.error(`Product with id ${productId} not found in products.`);
         return;  // Skip this item if product is not found
-    }
+        }
 
-    // Renamed the local variable to avoid conflicts with the imported deliveryOption
-    const deliveryOptionId = cartItem.deliveryOptionId;
-    let matchedDeliveryOption = null;  // Initialize variable to avoid accidental undefined usage
+        // Renamed the local variable to avoid conflicts with the imported deliveryOption
+        const deliveryOptionId = cartItem.deliveryOptionId;
+        let matchedDeliveryOption = null;  // Initialize variable to avoid accidental undefined usage
 
-    // Find the matching delivery option based on the cart item's deliveryOptionId
-    deliveryOption.forEach((option) => {
+        // Find the matching delivery option based on the cart item's deliveryOptionId
+        deliveryOption.forEach((option) => {
         if (option.id === deliveryOptionId) {
             matchedDeliveryOption = option;
         }
-    });
+        });
 
-    // Ensure the matchedDeliveryOption is found before trying to use it
-    if (matchedDeliveryOption) {
+        // Ensure the matchedDeliveryOption is found before trying to use it
+        if (matchedDeliveryOption) {
         const today = dayjs();
         const deliveryDate = today.add(matchedDeliveryOption.deliveryDay, 'day').format('dddd, MMMM D');
         console.log(`Delivery Date: ${deliveryDate}`);
@@ -70,15 +73,15 @@ cart.forEach((cartItem) => {
                 </div>
             </div>
         `;
-    } else {
+        } else {
         console.error(`Delivery option with ID ${deliveryOptionId} not found.`);
-    }
-});
+        }
+        });
 
-// Generating the HTML for the delivery options
-function deliveryOptionHTML(productId, cartItem) {
-    let deliveryOptionsHTML = '';
-    deliveryOption.forEach((option) => {
+        // Generating the HTML for the delivery options
+        function deliveryOptionHTML(productId, cartItem) {
+        let deliveryOptionsHTML = '';
+        deliveryOption.forEach((option) => {
         const today = dayjs();
         const deliveryDate = today.add(option.deliveryDay, 'day').format('dddd, MMMM D');
         const priceString = option.priceinCents === 0 ? 'Free' : `$${(option.priceinCents / 100).toFixed(2)}`;
@@ -97,27 +100,30 @@ function deliveryOptionHTML(productId, cartItem) {
                 </div>
             </div>
         </div>`;
-    });
-    return deliveryOptionsHTML;
-}
+        });
+        return deliveryOptionsHTML;
+        }
 
 
-document.querySelector('.order-summary').innerHTML = cartSummaryHTML;
+        document.querySelector('.order-summary').innerHTML = cartSummaryHTML;
 
-updateQuantity();
-document.querySelectorAll('.js-delete-quantity-link').forEach((link) => {
-    link.addEventListener('click', () => {
+        updateQuantity();
+        document.querySelectorAll('.js-delete-quantity-link').forEach((link) => {
+        link.addEventListener('click', () => {
         const productId = link.dataset.productId;
         removeFromCart(productId);
         document.querySelector(`.js-cart-item-container-${productId}`).remove();
         updateQuantity();
-    });
-});
+        });
+        });
 
-document.querySelectorAll('.js-delivery-option').forEach((element)=>{
-    element.addEventListener('click',()=>{
+        document.querySelectorAll('.js-delivery-option').forEach((element)=>{
+        element.addEventListener('click',()=>{
         const {productId , deliveryOptionId}= element.dataset
         updateDeliveryOption(productId, deliveryOptionId)
-        window.location.reload();
-    })
-})
+        // window.location.reload();
+        renderOrdersummary()
+        })
+        })
+}
+renderOrdersummary()
