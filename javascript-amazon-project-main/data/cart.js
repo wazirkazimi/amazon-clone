@@ -81,11 +81,8 @@ export function removeFromCart(productId) {
 //Update Quantity of the cart in the above head and in payment section
 export function updateQuantity() {
     //This lines add the total quantity of the cart to page
-let x=checkQauntity()
-document.querySelector('.js-total-cart-quantity').innerHTML=`Checkout (<a class="return-to-home-link "
-href="amazon.html">${x} items</a>)`
-console.log(x)
-document.querySelector('.js-payment-summary-row').innerHTML=`<div>Items (${x}):</div>`
+    let x=checkQauntity()
+    return x
 
 }
 

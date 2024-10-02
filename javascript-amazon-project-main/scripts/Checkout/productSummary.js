@@ -1,7 +1,7 @@
 import { cart, removeFromCart, checkQauntity, updateQuantity ,  updateDeliveryOption} from '../../data/cart.js';
 import { products } from '../../data/products.js';
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-import { deliveryOption } from '../../data/deliveryOption.js';
+import { deliveryOption , getDeliveryoption } from '../../data/deliveryOption.js';
 
 
 export function renderOrdersummary() {
@@ -20,20 +20,13 @@ export function renderOrdersummary() {
 
         // Renamed the local variable to avoid conflicts with the imported deliveryOption
         const deliveryOptionId = cartItem.deliveryOptionId;
-        let matchedDeliveryOption = null;  // Initialize variable to avoid accidental undefined usage
-
-        // Find the matching delivery option based on the cart item's deliveryOptionId
-        deliveryOption.forEach((option) => {
-        if (option.id === deliveryOptionId) {
-            matchedDeliveryOption = option;
-        }
-        });
+       const  matchedDeliveryOption = getDeliveryoption(deliveryOptionId)
 
         // Ensure the matchedDeliveryOption is found before trying to use it
         if (matchedDeliveryOption) {
         const today = dayjs();
         const deliveryDate = today.add(matchedDeliveryOption.deliveryDay, 'day').format('dddd, MMMM D');
-        console.log(`Delivery Date: ${deliveryDate}`);
+        // console.log(`Delivery Date: ${deliveryDate}`);
 
         cartSummaryHTML += `
             <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
@@ -121,7 +114,7 @@ export function renderOrdersummary() {
         element.addEventListener('click',()=>{
         const {productId , deliveryOptionId}= element.dataset
         updateDeliveryOption(productId, deliveryOptionId)
-        // window.location.reload();
+        window.location.reload();
         renderOrdersummary()
         })
         })
