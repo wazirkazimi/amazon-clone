@@ -2,6 +2,7 @@ import { cart, removeFromCart, checkQauntity, updateQuantity ,  updateDeliveryOp
 import { products } from '../../data/products.js';
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { deliveryOption , getDeliveryoption } from '../../data/deliveryOption.js';
+import { renderPaymentsummary } from "../Checkout/paymentSummary.js";
 
 
 export function renderOrdersummary() {
@@ -107,6 +108,7 @@ export function renderOrdersummary() {
         removeFromCart(productId);
         document.querySelector(`.js-cart-item-container-${productId}`).remove();
         updateQuantity();
+        renderPaymentsummary()
         });
         });
 

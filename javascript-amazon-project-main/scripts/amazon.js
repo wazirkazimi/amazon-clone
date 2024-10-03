@@ -64,8 +64,8 @@ document.querySelectorAll('.add-to-cart-button').forEach((button) => {
   button.addEventListener("click", () => {
     const productId = button.dataset.productId
     Idcheck(productId);
-    let  js_cart_quantity= checkQauntity();
-    document.querySelector('#js-cart-quantity').innerText = js_cart_quantity
+    // let  js_cart_quantity= checkQauntity();
+    document.querySelector('#js-cart-quantity').innerText = updateQuantity()
     savetoStorage();
     // updateQuantity()
     addTocartAnimation(button);

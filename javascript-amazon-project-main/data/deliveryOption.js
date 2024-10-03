@@ -5,7 +5,7 @@
 },{
     id:'2',
     deliveryDay: 3,
-    priceinCents: 4900
+    priceinCents: 499
 },{
     id:'3',
     deliveryDay: 1,
