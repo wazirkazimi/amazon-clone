@@ -73,11 +73,16 @@ export function removeFromCart(productId) {
             newCart.push(cartItem);
         }
     })
-
-
     cart=newCart
     savetoStorage()
 }
+//Addeding an +1 item to cart
+// export function addingToCart() {
+//     const newCart=[];
+//     cart.Quantity++
+//     savetoStorage()
+// }
+
 //Update Quantity of the cart in the above head and in payment section
 export function updateQuantity() {
     //This lines add the total quantity of the cart to page

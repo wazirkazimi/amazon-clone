@@ -49,7 +49,7 @@ export function renderOrdersummary() {
                             <span>
                                 Quantity: <span class="quantity-label">${cartItem.Quantity}</span>
                             </span>
-                            <span class="update-quantity-link link-primary">
+                            <span class="update-quantity-link link-primary js-update-quantity" onclick="addingToCart()">
                                 Update
                             </span>
                             <span class="delete-quantity-link link-primary js-delete-quantity-link" data-product-id="${matchingProduct.id}">
@@ -120,5 +120,7 @@ export function renderOrdersummary() {
         renderOrdersummary()
         })
         })
+
+       
 }
 // renderOrdersummary()
