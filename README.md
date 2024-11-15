@@ -1,20 +1,37 @@
 # **Amazon Clone**
 
-An Amazon-inspired e-commerce web application built using **HTML**, **CSS**, **JavaScript**, and various **dynamic modules**. Users can browse products, add them to the cart, and see delivery times calculated dynamically using the `datetime` module.
+Welcome to my Amazon Clone project! This e-commerce website replicates the functionalities of Amazon, showcasing my skills in development and dynamic web applications. Built using **HTML**, **CSS**, **JavaScript**, and additional modules, this project provides a platform to explore products, simulate ordering, and manage delivery dynamically.
+
+---
 
 ## **Features**
-- 🛒 **Dynamic Product Display**: Products are fetched and displayed dynamically.
-- ⏰ **Dynamic Delivery Time**: Delivery time is calculated using the `datetime` module.
-- 📦 **Order Management**: Users can add products to the cart and place orders.
-- 🌟 **Responsive Design**: Works seamlessly on both desktop and mobile devices.
-- 🔍 **Product Search**: Quickly find products using a search bar.
-- 📋 **Clean UI**: A user-friendly interface similar to Amazon.
+
+### 🛍️ **Home**
+Browse dynamically displayed products with seamless UI and discover a wide range of items.
+
+### 📦 **Order Management**
+Users can add products to their cart, place orders, and get delivery timelines calculated in real-time using the `datetime` module.
+
+### 🕒 **Dynamic Delivery**
+Estimated delivery times are auto-calculated and displayed based on the current date.
+
+### 🔍 **Search**
+Quickly find specific products using the integrated search bar.
+
+### 🎨 **Responsive Design**
+The website is designed to adapt seamlessly to different devices, offering an optimal experience on desktops, tablets, and smartphones.
 
 ---
 
-## **Tech Stack**
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend/Modules**: Integrated with various JavaScript modules
-- **Datetime Module**: For handling and displaying dynamic delivery dates
+## **Technologies Used**
+
+- **HTML**: To structure the content and layout of the website.
+- **CSS**: For designing and enhancing the visual appeal.
+- **JavaScript**: To add interactivity and dynamic features to the website.
+- **Datetime Module**: For real-time delivery time calculation.
+- **Responsive Design**: To ensure usability across multiple device types.
 
 ---
+
+## **How to Use**
+1. **Clone the Repository**
