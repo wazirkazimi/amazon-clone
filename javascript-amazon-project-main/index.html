@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazon.com-Clone. Spend less. Smile more.</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/pages/style.css">
+    <link rel="stylesheet" href="styles/shared/general.css">
+    <link rel="stylesheet" href="styles/shared/amazon-header.css">
+    <link rel="stylesheet" href="styles/pages/amazon.css">
 </head>
 <body>
     <nav class="top-navbar">
@@ -69,12 +72,17 @@
           <img src="./assets/header4.jpg" class="slider-imgs" alt="img1">
           <img src="./assets/header5.jpg" class="slider-imgs" alt="img1">
         </ul>
-        <div class="cards">
-          <div class="card1">
+        <!-- <div class="cards">
+          <div class="card1">            
+          </div>
+        </div> -->
+        <div class="main">
+          <div class="products-grid" id="js-products-grid">
             
           </div>
         </div>
       </div>
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
+    <script type="module" src="scripts/amazon.js"></script>
 </body>
 </html>

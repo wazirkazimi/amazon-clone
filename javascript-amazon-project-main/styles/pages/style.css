@@ -10,12 +10,13 @@
   font-style: 100;
 }
 .top-navbar{
+    padding-top: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: white;
     padding: 5px 7px;
-    height: 75px;
+    height: 102px;
     background-color: #131921;
 }
 .left-nav{
@@ -100,6 +101,7 @@
     border: 2px solid white;
  }
 .dnav{
+    margin-top: 102px;
     background-color:#232f3e;
     color: #e5e5e5;
     display: flex;
@@ -159,6 +161,7 @@
     position: relative;
 
 }
+
 
 
 

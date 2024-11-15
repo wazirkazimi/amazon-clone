@@ -17,16 +17,21 @@
     <link rel="stylesheet" href="styles/shared/general.css">
     <link rel="stylesheet" href="styles/shared/amazon-header.css">
     <link rel="stylesheet" href="styles/pages/amazon.css">
+    <link rel="stylesheet" href="styles/pages/style.css">
   </head>
   <body>
-    <div class="amazon-header">
-      <div class="amazon-header-left-section">
-        <a href="amazon.html" class="header-link">
-          <img class="amazon-logo"
-            src="images/amazon-logo-white.png">
-          <img class="amazon-mobile-logo"
-            src="images/amazon-mobile-logo-white.png">
-        </a>
+    <div class="amazon-header top-navbar">
+      <div class="amazon-header-left-section left-nav">
+        <a href="/"> <img src="assets/amazon_logo.png" width="100" alt="amazon_logo"></a> 
+        <div class="nav-country">
+        <span class="nav-location">
+            <img src="assets/location_icon.png" alt="location_icon" height="20">
+        </span>         
+        <span class="text-location">
+         <p>Deliver to</p>
+         <h2>India</h2>
+        </span>  
+     </div>
       </div>
 
       <div class="amazon-header-middle-section">
@@ -37,11 +42,25 @@
         </button>
       </div>
 
-      <div class="amazon-header-right-section">
-        <a class="orders-link header-link" href="orders.html">
+      <div class="amazon-header-right-section right-nav flex">
+        <!-- <a class="orders-link header-link" href="orders.html">
           <span class="returns-text">Returns</span>
           <span class="orders-text">& Orders</span>
-        </a>
+        </a> -->
+        <div class="nav-language">
+          <img src="assets/us_flag.png"  height="30" alt="us-flag">
+          <h2>EN</h2>
+          <img src="assets/dropdown_icon.png" height="12" alt="dropdown_icon">
+        </div>
+        <div class="nav-sign-in-account-list hover">
+          <p class="lighter-text">Hello, sign in</p>
+          <h2 class="font-size">Account & Lists</h2>
+          <img src="assets/dropdown_icon.png" height="12" alt="dropdown_icon">
+        </div>
+        <div class="nav-Return-order  hover">
+          <p class="lighter-text" >Returns</p>
+          <h2 class="font-size" >& Order</h2>
+        </div>
 
         <a class="cart-link header-link" href="checkout.html">
           <img class="cart-icon" src="images/icons/cart-icon.png">
@@ -50,13 +69,52 @@
         </a>
       </div>
     </div>
+    <div class="dnav">
+      <div class="menu hover"  >
+        <img src="assets/menu_icon.png" height="25px"  alt="">
+      <p>All</p>
+    </div>
+      <p class="hover" >Today's Deals</p>
+      <p class="hover" >Customer Service</p>
+      <p class="hover" >Registry</p>
+      <p class="hover" >Gift Cards</p>
+      <p class="hover" >Sell</p>
+    </div>
+    <div class="header-slider">
+      <a href="" class="control prev "> <img src="./assets/prev.svg" alt="previous"></a>
+      <a href="" class="control next "> <img src="./assets/next.svg" alt="next"></a>
+      <ul>
+        <img src="./assets/header1.jpg" class="slider-imgs" alt="img1">
+        <img src="./assets/header2.jpg" class="slider-imgs" alt="img1">
+        <img src="./assets/header3.jpg" class="slider-imgs" alt="img1">
+        <img src="./assets/header4.jpg" class="slider-imgs" alt="img1">
+        <img src="./assets/header5.jpg" class="slider-imgs" alt="img1">
+      </ul>
+      </div>
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="main">
       <div class="products-grid" id="js-products-grid">
         
       </div>
     </div>
-   
+
+    
     <script type="module" src="scripts/amazon.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>
